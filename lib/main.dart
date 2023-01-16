@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/screens/welcome.dart';
+import 'package:quiz/news_screen/news_home.dart';
+import 'package:quiz/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WelcomeScreen(),
+      // home: WelcomeScreen(),
+      // home: SigninScreen(),
+      // home: SignupScreen(),
+      // home: HomeScreen(),
+      home: NewsHome(),
     );
   }
 }
