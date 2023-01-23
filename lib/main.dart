@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/news_screen/news_home.dart';
 import 'package:quiz/screens/home_screen.dart';
 
 void main() {
@@ -20,8 +19,8 @@ class MyApp extends StatelessWidget {
       // home: WelcomeScreen(),
       // home: SigninScreen(),
       // home: SignupScreen(),
-      // home: HomeScreen(),
-      home: NewsHome(),
+      home: HomeScreen(),
+      // home: NewsHome(),
     );
   }
 }
