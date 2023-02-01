@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz/screens/welcome.dart';
 
 class DrawerScreen extends StatelessWidget {
   const DrawerScreen({super.key});
@@ -85,12 +87,17 @@ class DrawerScreen extends StatelessWidget {
               color: Colors.white,
             ),
             title: Text(
-              "Exit",
+              "Log Out",
               style: TextStyle(
                 color: Colors.white,
               ),
             ),
-            onTap: () => null,
+            onTap: () {
+              FirebaseAuth.instance.signOut().then((value) => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => WelcomeScreen()),
+                  ));
+            },
           ),
         ],
       ),

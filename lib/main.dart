@@ -1,7 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz/screens/home_screen.dart';
+import 'package:quiz/screens/signup_screen.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -18,8 +21,8 @@ class MyApp extends StatelessWidget {
       ),
       // home: WelcomeScreen(),
       // home: SigninScreen(),
-      // home: SignupScreen(),
-      home: HomeScreen(),
+      home: SignupScreen(),
+      // home: HomeScreen(),
       // home: NewsHome(),
     );
   }

@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz/screens/home_screen.dart';
 
 import 'login_screen.dart';
 
@@ -11,6 +13,35 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   bool _isObscure = true;
+
+  bool isloading = false;
+  Future signup() async {
+    setState(() {
+      isloading = true;
+    });
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailcontroller.text,
+        password: passwordcontroller.text,
+      );
+      if (userCredential.user != null) {
+        Route route = MaterialPageRoute(builder: (context) => HomeScreen());
+        Navigator.push(context, route);
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+    setState(() {
+      isloading = false;
+    });
+  }
 
   TextEditingController? controller;
   TextEditingController emailcontroller = TextEditingController();
@@ -121,6 +152,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 Container(
                   child: TextField(
+                    controller: emailcontroller,
                     onTap: () {},
                     keyboardType: TextInputType.emailAddress,
                     style: TextStyle(color: Colors.black),
@@ -208,10 +240,16 @@ class _SignupScreenState extends State<SignupScreen> {
                       backgroundColor: Colors.white,
                     ),
                     onPressed: () {
+                      // FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      //     email: emailcontroller.text,
+                      //     password: passwordcontroller.text);
                       // Navigator.push(
                       //   context,
                       //   MaterialPageRoute(builder: (context) => HomeScreen()),
                       // );
+                      setState(() {
+                        signup();
+                      });
                     },
                     child: Text(
                       'Create Account',
