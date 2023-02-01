@@ -6,7 +6,6 @@ import 'package:quiz/news_screen/news_home.dart';
 import 'package:quiz/screens/about_us.dart';
 import 'package:quiz/screens/drawer.dart';
 import 'package:quiz/vedio_screen/vedio_home.dart';
-
 import '../story_screen/story_home.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,6 +37,28 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(top: 10, bottom: 10, right: 25),
+            child: Container(
+              child: Center(
+                child: Text(
+                  "11.00",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              width: 65,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          )
+        ],
       ),
       body: SafeArea(
         child: Padding(

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/screens/signup_screen.dart';
 
-class SigninScreen extends StatelessWidget {
+class SigninScreen extends StatefulWidget {
   const SigninScreen({super.key});
 
+  @override
+  State<SigninScreen> createState() => _SigninScreenState();
+}
+
+class _SigninScreenState extends State<SigninScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,12 +39,12 @@ class SigninScreen extends StatelessWidget {
                 Container(
                   child: TextField(
                     onTap: () {},
-                    keyboardType: TextInputType.phone,
+                    keyboardType: TextInputType.emailAddress,
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                       fillColor: Colors.white,
                       filled: true,
-                      hintText: "Phone Number",
+                      hintText: "Email",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -73,7 +78,25 @@ class SigninScreen extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      // FirebaseAuth.instance
+                      //     .createUserWithEmailAndPassword(
+                      //         email: emailcontroller.text,
+                      //         password: passwordcontroller.text)
+                      //     .then((value) {
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(builder: (context) => HomeScreen()),
+                      //   );
+                      // });
+                      // .onError((error, stackTrace) {
+                      //   // print("error ${error.toString()}");
+                      //   const snackBar = SnackBar(
+                      //     content: Text('Wrong Email or Password'),
+                      //   );
+                      //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      // });
+                    },
                     child: Text(
                       'Sign In',
                       style: TextStyle(
